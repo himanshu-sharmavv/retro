@@ -18,6 +18,7 @@ play music then continue your work on the terminal.
 
 ## 🗺️ map 
 - [<code>📦 Installation</code>](#-installation)
+- [<code>📁 Directory Structure</code>](#-directory-structure)
 - [<code>🎮 Music management</code>](#-music-management)
 - [<code>🎧 Playlist management</code>](#-playlist-management)
 - [<code>🚦️ Controls</code>](#-controls)
@@ -41,6 +42,42 @@ $${\color{#AC3097}Uninstall \space \color{#56565E}Retro}$$
 ```sh
 ~/.local/bin/uninstall_retro.sh
 ```
+
+## 📁 Directory Structure
+
+```
+retro/
+├── client/                 # Client-side CLI application
+│   ├── cmd/               # Command-line interface commands
+│   │   └── views/         # Terminal UI views (status, playlists, etc.)
+│   ├── controller/        # Client controllers for commands and services
+│   └── main.go            # Client entry point
+├── server/                # Server-side music player
+│   ├── player/            # Core music player logic
+│   │   ├── db/            # Database models and operations
+│   │   ├── discord/       # Discord Rich Presence integration
+│   │   ├── engines/       # Music source engines (YouTube, SoundCloud)
+│   │   └── *.go           # Player, queue, and server logic
+│   └── main.go            # Server entry point
+├── config/                # Configuration management
+├── logger/                # Logging utilities
+├── shared/                # Shared utilities and constants
+├── scripts/               # Build and deployment scripts
+├── etc/                   # System service files (systemd)
+├── go.mod                 # Go module dependencies
+├── go.sum                 # Go module checksums
+├── Makefile               # Build automation
+└── README.md              # This file
+```
+
+#### $${\color{#AC3097}Key \space \color{#56565E}Components}$$
+
+- **client**: The command-line interface that users interact with. It communicates with the server to control music playback.
+- **server**: The background service that handles music playback, queue management, and downloading/streaming from various sources.
+- **engines**: Modular music source implementations for YouTube and SoundCloud.
+- **db**: SQLite database operations for storing playlists and music metadata.
+- **config**: Configuration file handling and default settings.
+- **shared**: Common utilities used across both client and server.
 
 ## 🎮 Music Management
 $${\color{#AC3097}Play \space \color{#56565E} Music}$$
